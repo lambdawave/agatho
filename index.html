@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGATHO AI Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="logo">
+          <span class="logo-mark">AG</span>
+          <span class="logo-text">AGATHO AI</span>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active">Dashboard</button>
+          <button class="nav-item">Campaigns</button>
+          <button class="nav-item">Influencers</button>
+          <button class="nav-item">Analytics</button>
+          <button class="nav-item">Settings</button>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="plan-card">
+            <p class="plan-title">Pipeline velocity</p>
+            <p class="plan-value">+28% this week</p>
+            <p class="plan-subtitle">AI follow-ups driving replies</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="main-header">
+          <div>
+            <h1>Creator pipeline, on autopilot</h1>
+            <p class="subtitle">
+              Personalize every outreach while AGATHO AI keeps the cadence.
+            </p>
+          </div>
+          <div class="avatar-group">
+            <div class="avatar">AM</div>
+            <div class="avatar">JL</div>
+            <div class="avatar">CS</div>
+            <span class="avatar-label">Team is online</span>
+          </div>
+        </header>
+
+        <section class="insights">
+          <div class="metric-card">
+            <p class="metric-label">Active campaigns</p>
+            <p class="metric-value" id="activeCampaigns">0</p>
+            <p class="metric-trend positive">+6 new this week</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Messages sent</p>
+            <p class="metric-value" id="messagesSent">0</p>
+            <p class="metric-trend">72% of quota</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Response rate</p>
+            <p class="metric-value" id="responseRate">0%</p>
+            <p class="metric-trend positive">+12% vs last week</p>
+          </div>
+        </section>
+
+        <section class="pipeline">
+          <div class="pipeline-header">
+            <h2>Influencer pipeline</h2>
+            <div class="pipeline-actions">
+              <button class="secondary">Filter</button>
+              <button class="primary">Add creator</button>
+            </div>
+          </div>
+          <div class="pipeline-tags" id="pipelineTags"></div>
+          <div class="pipeline-list" id="pipelineList"></div>
+        </section>
+      </main>
+
+      <section class="chat-panel">
+        <div class="chat-header">
+          <div>
+            <p class="chat-label">Currently drafting for</p>
+            <h2 id="chatInfluencerName">Select an influencer</h2>
+          </div>
+          <div class="chat-status" id="chatInfluencerStatus"></div>
+        </div>
+
+        <div class="chat-meta" id="chatMeta"></div>
+
+        <div class="chat-window" id="chatWindow">
+          <p class="empty-state">
+            Choose a creator from your pipeline to open the AI workspace.
+          </p>
+        </div>
+
+        <div class="chat-toolbar">
+          <button class="toolbar-btn" data-type="initial">
+            ✨ Initial outreach
+          </button>
+          <button class="toolbar-btn" data-type="followup">
+            🔁 Follow-up
+          </button>
+          <button class="toolbar-btn" data-type="custom">
+            🎯 Custom prompt
+          </button>
+        </div>
+
+        <div class="composer">
+          <label class="composer-label" for="promptInput">Prompt to guide AGATHO</label>
+          <textarea
+            id="promptInput"
+            placeholder="Add context or instructions to guide tone, offers, or next steps..."
+          ></textarea>
+          <div class="composer-actions">
+            <div class="ai-status" id="aiStatus">Ready to generate</div>
+            <div class="composer-buttons">
+              <button class="secondary" id="regenerateBtn">Regenerate</button>
+              <button class="primary" id="sendBtn">Send message</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <template id="pipelineItemTemplate">
+      <article class="pipeline-item">
+        <div class="pipeline-item-header">
+          <div class="avatar image-avatar"></div>
+          <div>
+            <h3 class="pipeline-name"></h3>
+            <p class="pipeline-niche"></p>
+          </div>
+        </div>
+        <div class="pipeline-body">
+          <div class="stat">
+            <span class="stat-label">Reach</span>
+            <span class="stat-value stat-reach"></span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Engagement</span>
+            <span class="stat-value stat-engagement"></span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Status</span>
+            <span class="status-pill"></span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="messageTemplate">
+      <div class="message ai">
+        <div class="message-metadata">
+          <span class="message-source">AGATHO AI</span>
+          <span class="message-timestamp"></span>
+        </div>
+        <p class="message-body"></p>
+      </div>
+    </template>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
